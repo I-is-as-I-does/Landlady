@@ -1,9 +1,9 @@
 {
     "name": "ssitu/landlady",
-    "description": "Minuscule php cookie param setter.",
+    "description": "Php utility to deal with subdomains and other host-related properties.",
     "type": "library",
-    "keywords" :["php", "cookie", "helper"],
-    "homepage":"https://github.com/I-is-as-I-does/Blondie",
+    "keywords" :["php", "utility", "host"],
+    "homepage":"https://github.com/I-is-as-I-does/Landlady",
     "license": "MIT",
     "readme":"README.md",
     "authors": [
@@ -17,11 +17,11 @@
        
     },
     "suggest": {
-        "ssitu/jacktrades": "If wanna use the 'getProtocol' helper method."
+       
     },
     "autoload": {
         "psr-4": {
-            "SSITU\\Blondie\\": "src"
+            "SSITU\\Landlady\\": "src"
         }
     }
 }
