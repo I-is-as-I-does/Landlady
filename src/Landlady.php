@@ -2,8 +2,6 @@
 /* This file is part of Landlady | SSITU | (c) 2021 I-is-as-I-does */
 namespace SSITU\Landlady;
 
-use \SSITU\MiniJack;
-
 class Landlady
 {
 
@@ -14,7 +12,7 @@ class Landlady
 
     private $hostLabel;
     private $hostUrl;
-  
+
     private $domainLabel;
     private $domainUrl;
 
@@ -40,7 +38,7 @@ class Landlady
     public function protocol()
     {
         if (!isset($this->protocol)) {
-            $this->protocol = MiniJack\Web::getProtocol($this->forceHttps, false);
+            $this->protocol = MiniJack::getProtocol($this->forceHttps, false);
         }
         return $this->protocol;
     }
@@ -114,11 +112,11 @@ class Landlady
     public function hostUrl(?string $addPath = null)
     {
         if (!isset($this->hostUrl)) {
-            $this->hostUrl = $this->protocol . '://' . $this->hostLabel . '/';
+            $this->hostUrl = $this->protocol . '://' . $this->hostLabel;
         }
 
         if ($addPath) {
-            return $this->hostUrl . $addPath;
+            return $this->hostUrl . '/' . $addPath;
         }
         return $this->hostUrl;
     }
@@ -140,11 +138,11 @@ class Landlady
     public function domainUrl(?string $addPath = null)
     {
         if (!isset($this->domainUrl)) {
-            $this->domainUrl = $this->protocol . '://' . $this->domainLabel . '/';
+            $this->domainUrl = $this->protocol . '://' . $this->domainLabel;
         }
 
         if ($addPath) {
-            return $this->domainUrl . $addPath;
+            return $this->domainUrl . '/' . $addPath;
         }
         return $this->domainUrl;
     }

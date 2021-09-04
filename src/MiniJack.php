@@ -1,7 +1,7 @@
 <?php
 /* This file is part of Landlady | SSITU | (c) 2021 I-is-as-I-does */
-namespace SSITU\MiniJack;
-class Web
+namespace SSITU\Landlady;
+class MiniJack
 {
 
     public static function getProtocol($forceHttps = false, $addDelimiter = false)
