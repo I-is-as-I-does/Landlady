@@ -54,7 +54,7 @@ class Landlady
     public function subdomain()
     {
         if (!isset($this->subdomain)) {
-            $this->subdomain = MiniJack\Web::extractSubDomain($this->host, false);
+            $this->subdomain = MiniJack::extractSubDomain($this->host(), false);
         }
         return $this->subdomain;
     }
@@ -62,8 +62,8 @@ class Landlady
     public function domain()
     {
         if (!isset($this->domain)) {
-            $this->domain = $this->host;
-            if (!empty($this->subdomain)) {
+            $this->domain = $this->host();
+            if (!empty($this->subdomain())) {
                 $this->domain = str_replace($this->subdomain . '.', '', $this->domain);
             }
         }
@@ -73,7 +73,7 @@ class Landlady
 
     public function altHost(string $newSubdomain)
     {
-        return $newSubdomain . '.' . $this->domain;
+        return $newSubdomain . '.' . $this->domain();
     }
 
     public function altHostLabel(string $newSubdomain, ?string $addPath = null)
@@ -91,15 +91,15 @@ class Landlady
     public function altHostUrl(string $newSubdomain, ?string $addPath = null)
     {
 
-        return $this->protocol . '://' . $this->altHostLabel($newSubdomain, $addPath);
+        return $this->protocol() . '://' . $this->altHostLabel($newSubdomain, $addPath);
 
     }
 
     public function hostLabel(?string $addPath = null)
     {
         if (!isset($this->hostLabel)) {
-            $this->hostLabel = $this->host;
-            if ($this->forceWww && $this->subdomain != 'www') {
+            $this->hostLabel = $this->host();
+            if ($this->forceWww && $this->subdomain() != 'www') {
                 $this->hostLabel = 'www.' . $this->hostLabel;
             }
         }
@@ -112,7 +112,7 @@ class Landlady
     public function hostUrl(?string $addPath = null)
     {
         if (!isset($this->hostUrl)) {
-            $this->hostUrl = $this->protocol . '://' . $this->hostLabel;
+            $this->hostUrl = $this->protocol() . '://' . $this->hostLabel();
         }
 
         if ($addPath) {
@@ -124,7 +124,7 @@ class Landlady
     public function domainLabel(?string $addPath = null)
     {
         if (!isset($this->domainLabel)) {
-            $this->domainLabel = $this->domain;
+            $this->domainLabel = $this->domain();
             if ($this->forceWww) {
                 $this->domainLabel = 'www.' . $this->domainLabel;
             }
@@ -138,7 +138,7 @@ class Landlady
     public function domainUrl(?string $addPath = null)
     {
         if (!isset($this->domainUrl)) {
-            $this->domainUrl = $this->protocol . '://' . $this->domainLabel;
+            $this->domainUrl = $this->protocol() . '://' . $this->domainLabel();
         }
 
         if ($addPath) {

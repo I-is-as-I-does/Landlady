@@ -17,6 +17,7 @@ require dirname(__DIR__) . '/src/Landlady.php';
     foreach($argms as $k => $argm){
         
     $Landlady = new SSITU\Landlady\Landlady(...$argm);
+    $MiniJack = new SSITU\Landlady\MiniJack();
     
     $store[] = '<h3>'.$k.'</h3>';
     $store[] = '<pre>';
